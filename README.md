@@ -9,6 +9,14 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 3. [Numpy](http://www.numpy.org/): computação científica.
 4. [Matplotlib](https://matplotlib.org/): visualização de dados.
 
+## Questão 1
+
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
+
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
 
