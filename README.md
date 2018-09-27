@@ -11,7 +11,7 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 
 # Solução
 
-### Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
+### Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
 
 Inicialmente foram importados os dados usando a função pd.read_cvs() e foram verificadas as dimensões do dataframe
 
@@ -20,7 +20,7 @@ data = pd.read_csv('bank-full.csv', sep=';', quotechar='"', encoding='utf8',pars
 data.shape
 ```
 
-Logo, foram identificadas as variáveis asignadas aos empréstimos (housing e loan) e as profissões (job). É verificado que as variáveis são do tipo object e devem ser transformadas em variáveis numéricas. Foi criado um novo dataframe e agrupado pela profissão.
+Logo, foram identificadas as variáveis assignadas aos empréstimos (housing e loan) e as profissões (job). É verificado que as variáveis são do tipo object e devem ser transformadas em variáveis numéricas. Foi criado um novo dataframe e agrupado pela profissão.
 
 ```python
 new_df = pd.get_dummies(data[['job', 'housing', 'loan']], columns=['housing', 'loan'])
@@ -34,7 +34,7 @@ new_df_group['housing'] = new_df_group['housing_yes']/(new_df_group['housing_yes
 new_df_group['loan'] = new_df_group['loan_yes']/(new_df_group['loan_yes'] + new_df_group['loan_no'])
 ```
 
-São organizados os dados de maior a menor em função da variável housing e finalmente é graficada a resposta.
+São organizados os dados de maior a menor em função da variável housing e finalmente é plotada a resposta.
 
 ```python
 new_df_group = new_df_group.sort_values(by='housing', ascending=False)
@@ -44,15 +44,15 @@ new_df_group = new_df_group.sort_values(by='housing', ascending=False)
 
 Da figura apresentada, pode-se observar que a profissão com uma maior tendência a fazer empréstimo é blue-collar.
 
-### Fazendo uma relação entre número de contatos e sucesso da campanha quais são os pontos relevantes a serem observados?
+### Fazendo uma relação entre número de contatos e sucesso da campanha quais são os pontos relevantes a serem observados?
 
-Inicialmente foram identificadas as variáveis de sucesso da campanha (y) e o número de contatos (campaign). Logo, a variável de sucesso de campanha (y) foi agrupada e determinado o número de ocorrências en todo o conjunto de dados.
+Inicialmente foram identificadas as variáveis de sucesso da campanha (y) e o número de contatos (campaign). Logo, a variável de sucesso de campanha (y) foi agrupada e determinado o número de ocorrências em todo o conjunto de dados.
 
 ```python
 new_df2 = data.groupby('y', as_index=False).count()
 ```
 
-Logo, foi usada a função barplot de [Seaborn](https://seaborn.pydata.org/) para determinar o número de contatos durante a campanha divido en dois grupos, que teve sucesso e que não teve sucesso. Foi feito também um gráfico circular para que a informação resultante fosse mais clara. 
+Logo, foi usada a função barplot de [Seaborn](https://seaborn.pydata.org/) para determinar o número de contatos durante a campanha divido em dois grupos, que teve sucesso e que não teve sucesso. Foi feito também um gráfico circular para que a informação resultante fosse mais clara. 
 
 ```python
 f, (ax1, ax2) = plt.subplots(1,2, figsize=(10,5))
@@ -65,27 +65,27 @@ ax2.pie(new_df2['campaign'], explode=explode, autopct='%1.1f%%',shadow=True, sta
 ax2.axis('equal')
 plt.tight_layout()
 ```
-Da figura, pode-se observar que a campanha teve só um 11.7% de successo na adesão (aproximadamente 5300 pessoas).
+Da figura, pode-se observar que a campanha teve só um 11.7% de sucesso na adesão (aproximadamente 5300 pessoas).
 
 ![question_2](https://user-images.githubusercontent.com/28451312/46163326-44ff5300-c261-11e8-9c5d-3e47ad509971.png)
 
-### Baseando-se nos resultados de adesão desta campanha qual o número médio e o máximo de ligações que você indica para otimizar a adesão?
+### Baseando-se nos resultados de adesão desta campanha qual o número médio e o máximo de ligações que você indica para otimizar a adesão?
 
-Para determinar o número médio e máximo de ligações, foi feito um diagrama de caixa. Este diagrama de caixa é uma ferramenta visual que representa variações de dados por meio de quartis. Para fazer este diagrama, foi re-definido um dataframe com as descripções do número de contatos realizados durante a campanha ao cliente, embora este tivesse aceito ou não a adesão.
+Para determinar o número médio e máximo de ligações, foi feito um diagrama de caixa. Este diagrama de caixa é uma ferramenta visual que representa variações de dados por meio de quartis. Para fazer este diagrama, foi redefinido um dataframe com as descrições do número de contatos realizados durante a campanha ao cliente, embora este tivesse aceito ou não a adesão.
 
 ```python
 new_df3 = pd.DataFrame({'campaign_no': data[data['y'] == 'no']['campaign'].describe()})
 new_df3['campaign_yes'] = data[data['y'] == 'yes']['campaign'].describe()
 ```
-Com a descripção obtida, foi graficado o diagrama de caixa como apresentado a seguir.
+Com a descrição obtida, foi plotado o diagrama de caixa como apresentado a seguir.
 
 ![question_3](https://user-images.githubusercontent.com/28451312/46163367-652f1200-c261-11e8-9112-71590bfc0f08.png)
 
-Deste diagrama observa-se que o número médio de ligações para obter a adesão foram duas, e o recomendado para evitar clientes discrepantes (dispersão de puntos fora da caixa) é dado pelo límite superior da caixa, neste caso, 6 chamadas. 
+Deste diagrama observa-se que o número médio de ligações para obter a adesão foram duas, e o recomendado para evitar clientes discrepantes (dispersão de pontos fora da caixa) é dado pelo limite superior da caixa, neste caso, 6 chamadas. 
 
-### O resultado da campanha anterior tem relevância na campanha atual?
+### O resultado da campanha anterior tem relevância na campanha atual?
 
-Para determinar se o resultado da campanha anterior teve relevância na campanha atual, inicialmente, foi identificada a variável do resultado da campanha de marketing anterior (poutcome) e a variável de sucesso da campanha (y). Logo, foi feita uma correlação entre estas variáveis tentando achar releância entre os resultados tanto positivos como negativos. O método usado para a correlação foi o método de Pearson através da função .corr().
+Para determinar se o resultado da campanha anterior teve relevância na campanha atual, inicialmente, foi identificada a variável do resultado da campanha de marketing anterior (poutcome) e a variável de sucesso da campanha (y). Logo, foi feita uma correlação entre estas variáveis tentando achar relevância entre os resultados tanto positivos como negativos. O método usado para a correlação foi o método de Pearson através da função .corr().
 
 ```python
 new_df4 = pd.get_dummies(data[['poutcome', 'y']])
@@ -108,7 +108,7 @@ with sns.axes_style("white"):
 
 Pode-se verificar que existe um coeficiente de correlação de 0.31 entre o sucesso da campanha anterior e a campanha atual.
 
-### Qual o fator determinante para que o banco exija um seguro de crédito?
+### Qual o fator determinante para que o banco exija um seguro de crédito?
 
 Inicialmente deve ser identificado se existe ou não um default no cliente, para logo depois, validar o saldo médio anual (em euros) que é o fator determinante para que o banco exija o seguro do crédito. 
 
@@ -136,9 +136,9 @@ plt.savefig('question_5.png')
 
 ![question_5](https://user-images.githubusercontent.com/28451312/46163438-a4f5f980-c261-11e8-8a8b-ff3f675dab6a.png)
 
-Na Figura obtida, observa-se que o banco exijirá um seguro de crédito para o cliente que tem defaul, enquanto que para os clientes que não apresentam default, o banco não exijirá seguro.
+Na Figura obtida, observa-se que o banco exigirá um seguro de crédito para o cliente que tem defaul, enquanto que para os clientes que não apresentam default, o banco não exigirá seguro.
 
-### Quais são as características mais proeminentes de um cliente que possua empréstimo imobiliário?
+### Quais são as características mais proeminentes de um cliente que possua empréstimo imobiliário?
 
 Inicialmente foram definidas as variáveis do tipo object como as características a serem usadas no análisis. Estas características são:
 
@@ -151,7 +151,7 @@ Uma vez identificadas estas características, foram obtidos os clientes com empr
 new_df6 = data[data['housing'] == 'yes'][Caracteristics].describe()
 ```
 
-Assim, foi obtido que, a característica mais proeminante de um cliente que possua empréstimo imobiliário são:
+Assim, foi obtido que, a característica mais proeminente de um cliente que possua empréstimo imobiliário são:
 
 ```python
 fig = plt.figure(figsize=(6,4))
@@ -169,4 +169,5 @@ plt.savefig('question_6.png')
 5. blue-collar (job).
 
 ![question_6](https://user-images.githubusercontent.com/28451312/46163499-bb03ba00-c261-11e8-84c0-4f2b6851df1d.png)
+
 
