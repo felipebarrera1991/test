@@ -9,18 +9,38 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 3. [Numpy](http://www.numpy.org/): computação científica.
 4. [Matplotlib](https://matplotlib.org/): visualização de dados.
 
-## Questão 1
+## Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
 
-Inicialmente foram importados os dados usando a função pd.read_cvs() e foram verificadas as dimensões do *frame*
+Inicialmente foram importados os dados usando a função pd.read_cvs() e foram verificadas as dimensões do dataframe
 
 ```python
 data = pd.read_csv('bank-full.csv', sep=';', quotechar='"', encoding='utf8',parse_dates=True)
 data.shape
 ```
 
+Logo, foram identificadas as variáveis asignadas aos empréstimos (housing e loan) e as profissões (job). É verificado que as variáveis são do tipo object e devem ser transformadas em variáveis numéricas. Foi criado um novo dataframe e agrupado pela profissão.
 
+```python
+new_df = pd.get_dummies(data[['job', 'housing', 'loan']], columns=['housing', 'loan'])
+new_df_group = new_df.groupby('job', as_index=False).sum()
+```
+
+Determina-se a relação dentre as variáveis dos empréstimos e os clientes.
+
+```python
+new_df_group['housing'] = new_df_group['housing_yes']/(new_df_group['housing_yes'] + new_df_group['housing_no'])
+new_df_group['loan'] = new_df_group['loan_yes']/(new_df_group['loan_yes'] + new_df_group['loan_no'])
+```
+
+São organizados os dados de maior a menor em função da variável housing e finalmente é graficada a resposta.
+
+```python
+new_df_group = new_df_group.sort_values(by='housing', ascending=False)
+```
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
+
+Da figura apresentada, pode-se observar que a profissão com uma maior tendência a fazer empréstimo é blue-collar
 
 
 
