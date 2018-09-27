@@ -46,7 +46,26 @@ Da figura apresentada, pode-se observar que a profissão com uma maior tendênci
 
 ### Fazendo uma relação entre número de contatos e sucesso da campanha quais são os pontos relevantes a serem observados?
 
+Inicialmente foram identificadas as variáveis de sucesso da campanha (y) e o número de contatos (campaign). Logo, a variável de sucesso de campanha (y) foi agrupada e determinado o número de ocorrências en todo o conjunto de dados.
 
+```python
+new_df2 = data.groupby('y', as_index=False).count()
+```
+
+Logo, foi usada a função barplot de [Seaborn](https://seaborn.pydata.org/) para determinar o número de contatos durante a campanha divido en dois grupos, que teve sucesso e que não teve sucesso. Foi feito também um gráfico circular para que a informação resultante fosse mais clara. 
+
+```python
+f, (ax1, ax2) = plt.subplots(1,2, figsize=(10,5))
+sns.barplot(x='campaign', y='y', data=new_df2, ax=ax1)
+ax1.set(xlim=(0, new_df2['campaign'].max()*1.2), ylabel='Client Subscribed', xlabel='Campaing')
+sns.despine(left=True, bottom=True)
+# Pie plot
+explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+ax2.pie(new_df2['campaign'], explode=explode, autopct='%1.1f%%',shadow=True, startangle=90)
+ax2.axis('equal')
+plt.tight_layout()
+```
+Da figura, pode-se observar que a campanha teve só um 11.7% de successo (aproximadamente 5300 pessoas) na adesão 
 
 ![question_2](https://user-images.githubusercontent.com/28451312/46163326-44ff5300-c261-11e8-9c5d-3e47ad509971.png)
 
