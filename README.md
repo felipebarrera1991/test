@@ -60,7 +60,7 @@ sns.barplot(x='campaign', y='y', data=new_df2, ax=ax1)
 ax1.set(xlim=(0, new_df2['campaign'].max()*1.2), ylabel='Client Subscribed', xlabel='Campaing')
 sns.despine(left=True, bottom=True)
 # Pie plot
-explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+explode = (0, 0.1)  
 ax2.pie(new_df2['campaign'], explode=explode, autopct='%1.1f%%',shadow=True, startangle=90)
 ax2.axis('equal')
 plt.tight_layout()
@@ -98,7 +98,7 @@ Uma vez determinada a correlação, é obtida uma matriz de confusão ou Heatmap
 mask = np.zeros_like(correlation)
 mask[np.triu_indices_from(mask)] = True
 
-with sns.axes_style("white"):
+with sns.axes_style('white'):
     plt.figure(figsize=(12,10))
     ax = sns.heatmap(correlation, mask=mask, vmax=.4, square=True,annot=True, cmap='YlGnBu')
     plt.savefig('question_4.png')
@@ -143,7 +143,7 @@ Na Figura obtida, observa-se que o banco exigirá um seguro de crédito para o c
 Inicialmente foram definidas as variáveis do tipo object como as características a serem usadas no análisis. Estas características são:
 
 ```python
-Caracteristics = ['job', "marital", "education", "default", "loan"]
+Caracteristics = ['job', 'marital', 'education', 'default', 'loan']
 ```
 Uma vez identificadas estas características, foram obtidos os clientes com empréstimo imobiliário (housing).
 
