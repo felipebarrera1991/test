@@ -4,10 +4,10 @@ Para desenvolver este teste foi usada a versão completa dos dados (**bank-full.
 
 Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o desenvolvimento do trabalho foram:
 
-⋅⋅⋅[Pandas](https://pandas.pydata.org/): estruturas de dados de alto desempenho.
-⋅⋅⋅[Seaborn](https://seaborn.pydata.org/):visualização de dados Python baseada no matplotlib.
-⋅⋅⋅[Numpy](http://www.numpy.org/): computação científica.
-⋅⋅⋅[Matplotlib](https://matplotlib.org/): visualização de dados.
+1. [Pandas](https://pandas.pydata.org/): estruturas de dados de alto desempenho.
+2. [Seaborn](https://seaborn.pydata.org/):visualização de dados Python baseada no matplotlib.
+3. [Numpy](http://www.numpy.org/): computação científica.
+4. [Matplotlib](https://matplotlib.org/): visualização de dados.
 
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
