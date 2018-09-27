@@ -110,14 +110,63 @@ Pode-se verificar que existe um coeficiente de correlação de 0.31 entre o suce
 
 ### Qual o fator determinante para que o banco exija um seguro de crédito?
 
+Inicialmente deve ser identificado se existe ou não um default no cliente, para logo depois, validar o saldo médio anual (em euros) que é o fator determinante para que o banco exija o seguro do crédito. 
 
+```python
+default_y = data[(data['default'] == 'yes') ]['balance']
+default_n = data[(data['default'] == 'no') ]['balance']
+
+new_df5 = pd.DataFrame({'default_yes': data[(data['default'] == 'yes') ]['balance'].describe()})
+new_df5['default_no'] = data[(data['default'] == 'no') ]['balance'].describe()
+```
+
+Usa-se a função distplot() do framework [Seaborn](https://seaborn.pydata.org/) para obter a distribuição do balance dos clientes com default e sem default.
+
+```python
+f, (ax1, ax2) = plt.subplots(1,2,figsize=(10,6))
+sns.distplot(default_y, kde=True, bins=20, ax=ax1)
+ax1.set(ylabel='Density', xlabel='Balance for Default')
+sns.despine(left=True, bottom=True)
+
+sns.distplot(default_n, kde=True, bins=20, ax=ax2)
+ax2.set(ylabel='Density', xlabel='Balance for No Default')
+plt.tight_layout()
+plt.savefig('question_5.png')
+```
 
 ![question_5](https://user-images.githubusercontent.com/28451312/46163438-a4f5f980-c261-11e8-8a8b-ff3f675dab6a.png)
 
-
+Na Figura obtida, observa-se que o banco exijirá um seguro de crédito para o cliente que tem defaul, enquanto que para os clientes que não apresentam default, o banco não exijirá seguro.
 
 ### Quais são as características mais proeminentes de um cliente que possua empréstimo imobiliário?
 
-![question_6](https://user-images.githubusercontent.com/28451312/46163499-bb03ba00-c261-11e8-84c0-4f2b6851df1d.png)
+Inicialmente foram definidas as variáveis do tipo object como as características a serem usadas no análisis. Estas características são:
 
+```python
+Caracteristics = ['job', "marital", "education", "default", "loan"]
+```
+Uma vez identificadas estas características, foram obtidos os clientes com empréstimo imobiliário (housing).
+
+```python
+new_df6 = data[data['housing'] == 'yes'][Caracteristics].describe()
+```
+
+Assim, foi obtido que, a característica mais proeminante de um cliente que possua empréstimo imobiliário são:
+
+```python
+fig = plt.figure(figsize=(6,4))
+ax = fig.add_axes([0.15, 0.15, 0.8, 0.8])
+ax.bar(Caracteristics,new_df6.loc['freq'])
+ax.set_ylabel('Frequency')
+ax.set_xlabel('Characteristics')
+plt.savefig('question_6.png')
+```
+
+1. sem (default).
+2. sem empréstimo (loan).
+3. Casado (Marial).
+4. Ensino superior (Education)
+5. blue-collar (job).
+
+![question_6](https://user-images.githubusercontent.com/28451312/46163499-bb03ba00-c261-11e8-84c0-4f2b6851df1d.png)
 
