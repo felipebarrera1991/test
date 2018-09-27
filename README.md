@@ -11,10 +11,9 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 
 ## Questão 1
 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+```python
+data = pd.read_csv('bank-full.csv', sep=';', quotechar='"', encoding='utf8',parse_dates=True)
+data.shape
 ```
 
 
