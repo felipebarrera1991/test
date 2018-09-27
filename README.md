@@ -65,20 +65,48 @@ ax2.pie(new_df2['campaign'], explode=explode, autopct='%1.1f%%',shadow=True, sta
 ax2.axis('equal')
 plt.tight_layout()
 ```
-Da figura, pode-se observar que a campanha teve só um 11.7% de successo (aproximadamente 5300 pessoas) na adesão 
+Da figura, pode-se observar que a campanha teve só um 11.7% de successo na adesão (aproximadamente 5300 pessoas).
 
 ![question_2](https://user-images.githubusercontent.com/28451312/46163326-44ff5300-c261-11e8-9c5d-3e47ad509971.png)
 
-
 ### Baseando-se nos resultados de adesão desta campanha qual o número médio e o máximo de ligações que você indica para otimizar a adesão?
+
+Para determinar o número médio e máximo de ligações, foi feito um diagrama de caixa. Este diagrama de caixa é uma ferramenta visual que representa variações de dados por meio de quartis. Para fazer este diagrama, foi re-definido um dataframe com as descripções do número de contatos realizados durante a campanha ao cliente, embora este tivesse aceito ou não a adesão.
+
+```python
+new_df3 = pd.DataFrame({'campaign_no': data[data['y'] == 'no']['campaign'].describe()})
+new_df3['campaign_yes'] = data[data['y'] == 'yes']['campaign'].describe()
+```
+Com a descripção obtida, foi graficado o diagrama de caixa como apresentado a seguir.
 
 ![question_3](https://user-images.githubusercontent.com/28451312/46163367-652f1200-c261-11e8-9112-71590bfc0f08.png)
 
+Deste diagrama observa-se que o número médio de ligações para obter a adesão foram duas, e o recomendado para evitar clientes discrepantes (dispersão de puntos fora da caixa) é dado pelo límite superior da caixa, neste caso, 6 chamadas. 
 
 ### O resultado da campanha anterior tem relevância na campanha atual?
 
+Para determinar se o resultado da campanha anterior teve relevância na campanha atual, inicialmente, foi identificada a variável do resultado da campanha de marketing anterior (poutcome) e a variável de sucesso da campanha (y). Logo, foi feita uma correlação entre estas variáveis tentando achar releância entre os resultados tanto positivos como negativos. O método usado para a correlação foi o método de Pearson através da função .corr().
+
+```python
+new_df4 = pd.get_dummies(data[['poutcome', 'y']])
+correlation = new_df4.corr(method='pearson')
+```
+
+Uma vez determinada a correlação, é obtida uma matriz de confusão ou Heatmap através do framework [Seaborn](https://seaborn.pydata.org/).
+
+```python
+mask = np.zeros_like(correlation)
+mask[np.triu_indices_from(mask)] = True
+
+with sns.axes_style("white"):
+    plt.figure(figsize=(12,10))
+    ax = sns.heatmap(correlation, mask=mask, vmax=.4, square=True,annot=True, cmap='YlGnBu')
+    plt.savefig('question_4.png')
+```
+
 ![question_4](https://user-images.githubusercontent.com/28451312/46163415-87c12b00-c261-11e8-84af-148d98a65a34.png)
 
+Pode-se verificar que existe um coeficiente de correlação de 0.31 entre o sucesso da campanha anterior e a campanha atual.
 
 ### Qual o fator determinante para que o banco exija um seguro de crédito?
 
