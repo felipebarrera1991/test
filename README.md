@@ -1,8 +1,7 @@
 # Data Science Teste
 
-Para desenvolver este teste foi usada a [fonte oficial](https://archive.ics.uci.edu/ml/datasets/bank+marketing)
+Para desenvolver este teste foi usada a versão completa dos dados (**bank-full.csv**) da [fonte oficial](https://archive.ics.uci.edu/ml/datasets/bank+marketing) fornecida no documento.
 
-Fonte oficial do ​dataset​:
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
 
