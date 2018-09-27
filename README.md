@@ -11,10 +11,13 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 
 ## Questão 1
 
+Inicialmente foram importados os dados usando a função pd.read_cvs() e foram verificadas as dimensões do *frame*
+
 ```python
 data = pd.read_csv('bank-full.csv', sep=';', quotechar='"', encoding='utf8',parse_dates=True)
 data.shape
 ```
+
 
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
