@@ -9,7 +9,9 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 3. [Numpy](http://www.numpy.org/): computação científica.
 4. [Matplotlib](https://matplotlib.org/): visualização de dados.
 
-## Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
+# Solução
+
+### Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
 
 Inicialmente foram importados os dados usando a função pd.read_cvs() e foram verificadas as dimensões do dataframe
 
@@ -40,32 +42,34 @@ new_df_group = new_df_group.sort_values(by='housing', ascending=False)
 
 ![question_1](https://user-images.githubusercontent.com/28451312/46163286-27ca8480-c261-11e8-933e-a6676b7128bc.png)
 
-Da figura apresentada, pode-se observar que a profissão com uma maior tendência a fazer empréstimo é blue-collar
+Da figura apresentada, pode-se observar que a profissão com uma maior tendência a fazer empréstimo é blue-collar.
 
-
-
+### Fazendo uma relação entre número de contatos e sucesso da campanha quais são os pontos relevantes a serem observados?
 
 
 
 ![question_2](https://user-images.githubusercontent.com/28451312/46163326-44ff5300-c261-11e8-9c5d-3e47ad509971.png)
 
 
-
+### Baseando-se nos resultados de adesão desta campanha qual o número médio e o máximo de ligações que você indica para otimizar a adesão?
 
 ![question_3](https://user-images.githubusercontent.com/28451312/46163367-652f1200-c261-11e8-9112-71590bfc0f08.png)
 
 
-
+### O resultado da campanha anterior tem relevância na campanha atual?
 
 ![question_4](https://user-images.githubusercontent.com/28451312/46163415-87c12b00-c261-11e8-84af-148d98a65a34.png)
 
 
+### Qual o fator determinante para que o banco exija um seguro de crédito?
 
 
 
 ![question_5](https://user-images.githubusercontent.com/28451312/46163438-a4f5f980-c261-11e8-8a8b-ff3f675dab6a.png)
 
 
+
+### Quais são as características mais proeminentes de um cliente que possua empréstimo imobiliário?
 
 ![question_6](https://user-images.githubusercontent.com/28451312/46163499-bb03ba00-c261-11e8-84c0-4f2b6851df1d.png)
 
