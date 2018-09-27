@@ -9,6 +9,8 @@ Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o 
 3. [Numpy](http://www.numpy.org/): computação científica.
 4. [Matplotlib](https://matplotlib.org/): visualização de dados.
 
+Rodar os arquivos (Desafio Data Science.ipynb) através de jupyter notebook ou o arquivo (Desafio Data Science.py) através de um IDE (foi feito usando Visual Studio).
+
 # Solução
 
 ### Qual profissão tem mais tendência a fazer um empréstimo? De qual tipo?
