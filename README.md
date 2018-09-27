@@ -4,8 +4,8 @@ Para desenvolver este teste foi usada a versão completa dos dados (**bank-full.
 
 Foi usada a versão Python 3.6.5 com Anaconda, Inc. Os frameworks usados para o desenvolvimento do trabalho foram:
 
-[pandas](https://pandas.pydata.org/) -> estruturas de dados de alto desempenho.
-[seaborn](https://seaborn.pydata.org/) -> visualização de dados Python baseada no matplotlib.
+...[pandas](https://pandas.pydata.org/) -> estruturas de dados de alto desempenho.
+...[seaborn](https://seaborn.pydata.org/) -> visualização de dados Python baseada no matplotlib.
 [numpy](http://www.numpy.org/) -> computação científica.
 [matplotlib](https://matplotlib.org/) -> visualização de dados.
 
